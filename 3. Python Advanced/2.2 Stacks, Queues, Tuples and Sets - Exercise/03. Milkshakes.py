@@ -13,16 +13,16 @@ while milkshakes < 5 and chocolates and milk_cups:
     if milk_cups[0] <= 0:
         milk_cups.popleft()
         flag = True
-    
+
     if flag:
         continue
-
+ 
     if chocolates[-1] == milk_cups[0]:
         milkshakes += 1
         chocolates.pop()
         milk_cups.popleft()
     else:
-        milk_cups.append(milk_cups.popleft())
+        milk_cups.rotate(-1)
         chocolates[-1] -= 5
 
 if milkshakes == 5:
