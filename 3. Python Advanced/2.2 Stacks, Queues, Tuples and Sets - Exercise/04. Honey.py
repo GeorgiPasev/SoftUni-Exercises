@@ -15,7 +15,7 @@ while bees and nectar:
             total_honey += abs(bee - collected_nectar)
         elif symbol == '*':
             total_honey += abs(bee * collected_nectar)
-        else:
+        elif symbol == '/':
             if collected_nectar == 0 or bee == 0:
                 continue
             total_honey += abs(bee / collected_nectar)
