@@ -1,4 +1,5 @@
-rows, cols = [int(x) for x in input().split(", ")]
+# rows, cols = [int(x) for x in input().split(', ')]
+rows, cols = map(int, input().split(', '))
 matrix = []
 
 for _ in range(rows):

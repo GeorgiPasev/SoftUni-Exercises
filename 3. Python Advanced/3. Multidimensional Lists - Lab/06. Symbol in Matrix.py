@@ -1,15 +1,11 @@
-size = int(input())
-matrix = []
+N = int(input())
+matrix = [list(input()) for _ in range(N)]
+
+find = input()
 found = False
-
-for _ in range(size):
-    matrix.append(list(input()))
-
-target_char = input()
-
-for row in range(size):
-    for col in range(size):
-        if matrix[row][col] == target_char:
+for row in range(N):
+    for col in range(N):
+        if matrix[row][col] == find:
             print(f'({row}, {col})')
             found = True
             break
@@ -17,4 +13,4 @@ for row in range(size):
         break
 
 if not found:
-    print(f'{target_char} does not occur in the matrix')
+    print(f'{find} does not occur in the matrix')
