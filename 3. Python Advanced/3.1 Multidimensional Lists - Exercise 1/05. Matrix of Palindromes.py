@@ -9,3 +9,4 @@ for row in range(rows):
         submatrix.append(result)
 
     print(*submatrix)
+    
