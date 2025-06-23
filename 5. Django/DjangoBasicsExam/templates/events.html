@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+            <!-- Events page -->
+            {% if events %}
+            <h2>We have {{ event_count }} events in total.</h2>
+            {% else %}
+            <h2>No events so far.</h2>
+            {% endif %}
+
+            <section id="dashboard">
+
+                {% for event in events %}
+
+                <div class="post">
+                    <!-- event slogan -->
+                    <h3 class="title">{{ event.slogan }}</h3>
+                    <!-- event banner image if there is such, otherwise display the default one -->
+
+                    <img src="{% if event.banner_url %}
+                                    {{ event.banner_url }}
+                                {% else %}
+                                    {% static 'images/event-default-img.png' %}
+                                {% endif %}"
+                                alt="{{ event.slogan }} img" />
+
+                    <!-- event start time in format "D d M Y H:i" -->
+                    <p class="description">{{ event.start_time|date:"D d M Y H:i" }}</p>
+                    <!-- event location" -->
+                    <p class="description">{{ event.location }}</p>
+                    <!-- event details button -->
+                    <a class="details-btn" href="{% url 'event_details' event.pk %}">Click for more</a>
+                </div>
+            {% endfor %}
+
+            </section>
+{% endblock %}

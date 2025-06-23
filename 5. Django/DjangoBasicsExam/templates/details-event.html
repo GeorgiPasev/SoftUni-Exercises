@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+            <!-- Event Details -->
+            <section id="details">
+                <div id="details-wrapper">
+                    <h2>Event Details</h2>
+                    <!-- event image if there is such, otherwise display the default one '/images/event-default-img.png' -->
+
+                    <img src="{% if event.banner_url %}
+                                {{ event.banner_url }}
+                            {% else %}
+                                {% static 'images/event-default-img.png' %}
+                            {% endif %}"
+                            alt="{{ event.slogan }} img" />
+
+                    <!-- event slogan -->
+                    <p id="details-title">
+                        {{ event.slogan }}
+                    </p>
+                    <div id="info-wrapper">
+                        <div id="details-description">
+
+                            <p class="description">
+                                {{ formatted_start_time }}
+                            </p>
+
+                            <p class="description">
+                                {{ event.location }}
+                            </p>
+                            <p>
+                                {{ event.available_tickets }} available tickets
+                            </p>
+
+
+                            {% if event.key_features %}
+                            <p>
+                                <strong>Key features: </strong>{{ event.key_features }}
+                            </p>
+                            {% endif %}
+
+                        </div>
+
+                        <!--Edit and Delete buttons -->
+                        <div id="action-buttons">
+                            <a href="{% url 'edit_event' event.pk %}" id="edit-btn">Edit</a>
+                            <a href="{% url 'delete_event' event.pk %}" id="delete-btn">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+{% endblock %}
